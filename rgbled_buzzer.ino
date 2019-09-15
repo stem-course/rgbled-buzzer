@@ -1,32 +1,34 @@
 /*
-  Code by: www.munphurid.com
-  Syed Rafay Hashmi
+  Code by:
+  Syed Rafay Hashmi and M.Hashir
 
-  This is a code that makes a pattern generator which changes colous of light and different tunes on buzzer
+  This is a code that makes a pattern generator which changes colous of light and plays different tunes on buzzer
 
   Hardware:
   -Arduino
   -RGB light
   -buzzer
 
-  Connections:
+Connections:
+Hold the led in your hand such that the longest pin of RGB LED is second pin from left.
+Left most pin is pin 1 and right most pin is pin 4
 
-  -Connect +ve of buzzer to pin 11 of Arduino
-  -Connect -ve of buzzer to GND of Arduino
+  Connect pin 1 (red) of RGB LED to pin 3 of Arduino
+  Connect pin 2 (VCC) of RGB LED to resistor and connect other end of resistor to pin 5V of Arduino
+  Connect pin 3 (green) of RGB LED to pin 5 of Arduino
+  Connect pin 4 (blue) of RGB LED to pin 6 of Arduino
 
-  Connect redpin of RGB to pin 3 of Arduino
-  Connect greenpin of RGB to pin 5 of Arduino
-  Connect bluepin of RGB to pin 6 of Arduino
+  -Connect longer leg of buzzer to pin 11 of Arduino
+  -Connect shorter leg of buzzer to GND of Arduino
 */
 
 int buzzer = 11;                                             //Buzzer is connected to pin11
 int redPin = 3;
 int greenPin = 5;
 int bluePin = 6;
-//#include "pitches.h"
 
-int melody[] = {                                              // notes in the melody
-  2000, 2000, 2000, 2000, 2000                                 //Enter notes or frequencies here
+int melody[] = {                                              
+  2000, 2000, 2000, 2000, 2000,1000,4000,3000                                 //These frequencies of sound will be played
 };
 
 int noteDurations[] = {                                       // note durations: 4 = quarter note, 8 = eighth note, etc.:
@@ -42,12 +44,10 @@ void setup() {
 }
 
 void loop() {
-  for (int thisNote = 0; thisNote < 8; thisNote++) {          // iterate over the notes of the melody:
+  for (int thisNote = 0; thisNote < 8; thisNote++) {          //Do not edit this line
 
-    // to calculate the note duration, take one second
-    // divided by the note type.
-    int noteDuration = 1000 / noteDurations[thisNote];        //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
-    tone(buzzer, melody[thisNote], noteDuration);
+    int noteDuration = 1000 / noteDurations[thisNote];        //Do not edit this line
+    tone(buzzer, melody[thisNote], noteDuration);             //Do not edit this line
     switch (thisNote) {
       case 0:
         setColor(150, 0, 255);
