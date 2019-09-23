@@ -22,6 +22,9 @@ Left most pin is pin 1 and right most pin is pin 4
   -Connect shorter leg of buzzer to GND of Arduino
 */
 
+//Comment this line if not using Common Anode LED
+#define COMMON_ANODE
+
 int buzzer = 11;                                             //Buzzer is connected to pin11
 int redPin = 3;
 int greenPin = 5;
@@ -31,7 +34,7 @@ int melody[] = {
   2000, 2000, 2000, 2000, 2000,1000,4000,3000                                 //These frequencies of sound will be played
 };
 
-int noteDurations[] = {                                       // note durations: 4 = quarter note, 8 = eighth note, etc.:
+int noteDurations[] = {                               
   4, 8, 8, 4, 4, 4, 4, 4                                      //Enter duration of each note or frequency
 };
 
@@ -81,8 +84,9 @@ void loop() {
     noTone(buzzer);                                           // stop the tone playing:
     delay(10);
   }
-  // no need to repeat the melody.
+delay(5000);        //Wait before repeating
 }
+
 void setColor(int red, int green, int blue)
 {
 #ifdef COMMON_ANODE
